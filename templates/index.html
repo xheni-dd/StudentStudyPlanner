@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Study Planner</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Student Study Planner</h1>
+        <p>Organize your assignments and stay on track!</p>
+    </header>
+
+    <main>
+
+        <!-- Assignment Form -->
+        <section class="form-section">
+
+            <h2 id="form-title">Add New Assignment</h2>
+
+            <form id="assignment-form">
+
+                <input type="hidden" id="assignment-id">
+
+                <label for="assignment-name">Assignment Name</label>
+                <input
+                    type="text"
+                    id="assignment-name"
+                    placeholder="Enter assignment name"
+                    required
+                >
+
+                <label for="course">Course</label>
+                <select id="course" required>
+                    <option value="">Select a course</option>
+                </select>
+
+                <label for="due-date">Due Date</label>
+                <input type="date" id="due-date" required>
+
+                <label for="description">Description</label>
+                <textarea
+                    id="description"
+                    placeholder="Enter assignment details"
+                ></textarea>
+
+                <button type="submit" id="save-button">
+                    Add Assignment
+                </button>
+
+                <button
+                    type="button"
+                    id="cancel-button"
+                    class="secondary-button"
+                    hidden
+                >
+                    Cancel Edit
+                </button>
+
+            </form>
+
+            <p id="message"></p>
+
+        </section>
+
+
+        <!-- Progress Section -->
+        <section class="progress-section">
+
+            <h2>My Progress</h2>
+
+            <div class="progress-info">
+                <span id="progress-text">0% Completed</span>
+            </div>
+
+            <div class="progress-bar">
+                <div id="progress-fill"></div>
+            </div>
+
+        </section>
+
+
+        <!-- Due Soon -->
+        <section>
+
+            <h2>Due Soon</h2>
+
+            <div id="due-soon-list" class="assignment-list"></div>
+
+        </section>
+
+
+        <!-- Upcoming Assignments -->
+        <section>
+
+            <h2>Upcoming Assignments</h2>
+
+            <div id="upcoming-list" class="assignment-list"></div>
+
+        </section>
+
+
+        <!-- Completed Assignments -->
+        <section>
+
+            <h2>Completed Assignments</h2>
+
+            <div id="completed-list" class="assignment-list"></div>
+
+        </section>
+
+        <!-- Missed Assignments -->
+        <section>
+
+            <h2>Missed Assignments</h2>
+
+            <div id="missed-list" class="assignment-list"></div>
+            
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Student Study Planner | CSC 226 Project</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
