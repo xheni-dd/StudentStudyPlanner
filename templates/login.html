@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Student Study Planner</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fb;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            width: 100%;
+            max-width: 420px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #344b75;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #344b75;
+            margin-top: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 18px;
+            background-color: #344b75;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #243653;
+        }
+
+        .message {
+            background: #fff3cd;
+            color: #664d03;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 12px;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin-top: 28px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Student Study Planner</h1>
+
+        <p class="subtitle">
+            Organize your assignments and stay on track!
+        </p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- LOGIN FORM -->
+        <h2>Login</h2>
+
+        <form action="{{ url_for('login') }}" method="POST">
+
+            <label for="login-email">Email</label>
+            <input
+                type="email"
+                id="login-email"
+                name="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label for="login-password">Password</label>
+            <input
+                type="password"
+                id="login-password"
+                name="password"
+                placeholder="Enter your password"
+                required
+            >
+
+            <button type="submit">Login</button>
+
+        </form>
+
+        <hr class="divider">
+
+        <!-- REGISTRATION FORM -->
+        <h2>Create an Account</h2>
+
+        <form action="{{ url_for('register') }}" method="POST">
+
+            <label for="first-name">First Name</label>
+            <input
+                type="text"
+                id="first-name"
+                name="first_name"
+                placeholder="Enter your first name"
+                required
+            >
+
+            <label for="last-name">Last Name</label>
+            <input
+                type="text"
+                id="last-name"
+                name="last_name"
+                placeholder="Enter your last name"
+                required
+            >
+
+            <label for="register-email">Email</label>
+            <input
+                type="email"
+                id="register-email"
+                name="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label for="register-password">Password</label>
+            <input
+                type="password"
+                id="register-password"
+                name="password"
+                placeholder="At least 8 characters"
+                minlength="8"
+                required
+            >
+
+            <button type="submit">Create Account</button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
